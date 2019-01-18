@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import { graphql } from "react-apollo";
 import query from "../queries/fetchSongs";
 import gql from "graphql-tag";
-import withGraphQL from "../util/withGraphQL";
 
 class SongList extends Component {
   onSongDelete(id) {
@@ -47,4 +47,4 @@ const mutation = gql`
   }
 `;
 
-export default withGraphQL(SongList, query, mutation);
+export default graphql(mutation)(graphql(query)(SongList));
