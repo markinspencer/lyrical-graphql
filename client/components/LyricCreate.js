@@ -23,7 +23,7 @@ class LyricCreate extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
-        <label> Add a Lyric</label>
+        <label>Add a Lyric</label>
         <input
           value={this.state.content}
           onChange={event => this.setState({ content: event.target.value })}
@@ -37,8 +37,9 @@ class LyricCreate extends Component {
 const mutation = gql`
   mutation AddLyricToSong($content: String, $songId: ID!) {
     addLyricToSong(content: $content, songId: $songId) {
-      title
+      id
       lyrics {
+        id
         content
       }
     }
